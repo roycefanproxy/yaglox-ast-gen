@@ -6,6 +6,7 @@ import (
 	"io/fs"
 	"os"
 	"path"
+	"path/filepath"
 	"text/template"
 )
 
@@ -48,9 +49,10 @@ func main() {
 }
 
 func defineAST(outputDir, interfaceName string, defs []*Definition) {
-	pwd, _ := os.Getwd()
-	fmt.Println(pwd)
-	tmplFilePath := path.Join(pwd, "expression.go.tmpl")
+	exePwd, err := os.Executable()
+	tmplDir := filepath.Dir(exePwd)
+	fmt.Println("template path: ", tmplDir)
+	tmplFilePath := path.Join(tmplDir, "expression.go.tmpl")
 	filePath := path.Join(outputDir, "expression.go")
 
 	tmplStr, err := os.ReadFile(tmplFilePath)
