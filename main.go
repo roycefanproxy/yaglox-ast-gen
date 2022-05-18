@@ -30,7 +30,7 @@ func main() {
 	defineAST(outputDir, "Expr", []*Definition{
 		{
 			Name:    "Binary",
-			Members: []string{"Left Expr", "Operator yaglox.Token", "Right Expr"},
+			Members: []string{"Left Expr", "Operator Token", "Right Expr"},
 		},
 		{
 			Name:    "Grouping",
@@ -42,7 +42,7 @@ func main() {
 		},
 		{
 			Name:    "Unary",
-			Members: []string{"Operator yaglox.Token", "Right Expr"},
+			Members: []string{"Operator Token", "Right Expr"},
 		},
 	})
 }

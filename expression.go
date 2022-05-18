@@ -3,8 +3,6 @@ package main
 const TemplateSource = `
 package main
 
-import "github.com/roycefanproxy/yaglox"
-
 type {{.BaseName}} struct {
 
 }
