@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io/fs"
 	"os"
+	"path/filepath"
+	"strings"
 	"text/template"
 )
 
@@ -39,6 +41,16 @@ func main() {
 	}
 
 	outputDir := os.Args[1]
+	visitorTypes := []*VisitorType{
+		{
+			Name: "String",
+			Type: "string",
+		},
+		{
+			Name: "Interface",
+			Type: "interface{}",
+		},
+	}
 
 	defineAST(outputDir, "Expr", []*Definition{
 		{
@@ -57,19 +69,24 @@ func main() {
 			Name:    "Unary",
 			Members: []string{"Operator Token", "Right Expr"},
 		},
-	}, []*VisitorType{
+	}, visitorTypes)
+
+	defineAST(outputDir, "Stmt", []*Definition{
 		{
-			Name: "String",
-			Type: "string",
+			Name:    "ExprStmt",
+			Members: []string{"Expression Expr"},
 		},
 		{
-			Name: "Interface",
-			Type: "interface{}",
+			Name:    "PrintStmt",
+			Members: []string{"Expression Expr"},
 		},
-	})
+	}, visitorTypes)
+
 }
 
-func defineAST(filePath, interfaceName string, defs []*Definition, visitorTypes []*VisitorType) {
+func defineAST(outputDir, interfaceName string, defs []*Definition, visitorTypes []*VisitorType) {
+	filename := fmt.Sprintf("%s.go", strings.ToLower(interfaceName))
+	filePath := filepath.Join(outputDir, filename)
 	tmpl := template.Must(template.New("expressions").Funcs(funcMap).Parse(TemplateSource))
 
 	buf := &bytes.Buffer{}
