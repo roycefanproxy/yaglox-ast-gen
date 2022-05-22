@@ -6,22 +6,16 @@ const TemplateSource = `
 package main
 
 type Visitor[R any] interface {
-{{range $def := $defs}}
-    Visit{{$def.Name}}{{$.BaseName}}(expr *{{$def.Name}}) R
-{{end}}
+    {{range $i, $def := $defs}}Visit{{$def.Name}}{{$.BaseName}}(expr *{{$def.Name}}) R{{if ne (len $defs) (add $i 1)}}{{"\n\t"}}{{end}}{{end}}
 }
 
 type {{.BaseName}} interface {
-    {{range $visitor := $visitors}}
-    Accept{{$visitor.Name}}(visitor Visitor[{{$visitor.Type}}]) {{$visitor.Type}}
-    {{end}}
+    {{range $j, $visitor := $visitors}}Accept{{$visitor.Name}}(visitor Visitor[{{$visitor.Type}}]) {{$visitor.Type}}{{if ne (len $visitors) (add $j 1)}}{{"\n\t"}}{{end}}{{end}}
 }
-
 {{range $def := $defs}}
 type {{$def.Name}} struct {
-    {{range $j, $member := $def.Members}}{{$member}}{{"\n\t"}}{{end}}
+    {{range $k, $member := $def.Members}}{{$member}}{{if ne (len $def.Members) (add $k 1)}}{{"\n\t"}}{{end}}{{end}}
 }
-
 {{range $visitor := $visitors}}
 func (e *{{$def.Name}}) Accept{{$visitor.Name}}(visitor Visitor[{{$visitor.Type}}]) {{$visitor.Type}} {
     return visitor.Visit{{$def.Name}}{{$.BaseName}}(e)

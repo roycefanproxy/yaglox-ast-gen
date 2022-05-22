@@ -24,6 +24,14 @@ type VisitorType struct {
 	Name string
 }
 
+var funcMap = template.FuncMap{
+	"add": add,
+}
+
+func add(a, b int) int {
+	return a + b
+}
+
 func main() {
 	if len(os.Args) != 2 {
 		fmt.Fprintln(os.Stderr, "Usage: yaglox-ast-gen <output directory with filename>")
@@ -62,7 +70,7 @@ func main() {
 }
 
 func defineAST(filePath, interfaceName string, defs []*Definition, visitorTypes []*VisitorType) {
-	tmpl := template.Must(template.New("expressions").Parse(TemplateSource))
+	tmpl := template.Must(template.New("expressions").Funcs(funcMap).Parse(TemplateSource))
 
 	buf := &bytes.Buffer{}
 	data := &TemplateData{
