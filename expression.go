@@ -3,7 +3,7 @@ package main
 const TemplateSource = `
 package main
 
-type {{.BaseName}} struct {
+type {{.BaseName}} interface {
 
 }
 
