@@ -27,11 +27,31 @@ type VisitorType struct {
 }
 
 var funcMap = template.FuncMap{
-	"add": add,
+	"add":             add,
+	"typeParam":       typeParam,
+	"needVoidVisitor": needVoidVisitor,
 }
 
 func add(a, b int) int {
 	return a + b
+}
+
+func typeParam(typeStr string) string {
+	if typeStr == "" {
+		return "Void"
+	}
+
+	return fmt.Sprintf("[%s]", typeStr)
+}
+
+func needVoidVisitor(visitorTypes []*VisitorType) bool {
+	for _, vt := range visitorTypes {
+		if vt.Name == "" {
+			return true
+		}
+	}
+
+	return false
 }
 
 func main() {
@@ -49,6 +69,10 @@ func main() {
 		{
 			Name: "Interface",
 			Type: "interface{}",
+		},
+		{
+			Name: "",
+			Type: "",
 		},
 	}
 
