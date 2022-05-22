@@ -13,7 +13,7 @@ type Visitor[R any] interface {
 
 type {{.BaseName}} interface {
     {{range $visitor := $visitors}}
-    Accept{{$visitor.Name}}(visitor Visitor[{{$visitor.Type}}]) string
+    Accept{{$visitor.Name}}(visitor Visitor[{{$visitor.Type}}]) {{$visitor.Type}}
     {{end}}
 }
 
@@ -23,7 +23,7 @@ type {{$def.Name}} struct {
 }
 
 {{range $visitor := $visitors}}
-func (e *{{$def.Name}}) Accept{{$visitor.Name}}(visitor Visitor[{{$visitor.Type}}]) string {
+func (e *{{$def.Name}}) Accept{{$visitor.Name}}(visitor Visitor[{{$visitor.Type}}]) {{$visitor.Type}} {
     return visitor.Visit{{$def.Name}}{{$.BaseName}}(e)
 }
 {{end}}
