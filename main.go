@@ -93,6 +93,10 @@ func main() {
 			Name:    "Unary",
 			Members: []string{"Operator Token", "Right Expr"},
 		},
+		{
+			Name:    "Variable",
+			Members: []string{"Name Token"},
+		},
 	}, visitorTypes)
 
 	defineAST(outputDir, "Stmt", []*Definition{
@@ -103,6 +107,10 @@ func main() {
 		{
 			Name:    "PrintStmt",
 			Members: []string{"Expression Expr"},
+		},
+		{
+			Name:    "VarDeclStmt",
+			Members: []string{"Name Token", "Initializer Expr"},
 		},
 	}, visitorTypes)
 
