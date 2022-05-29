@@ -117,6 +117,10 @@ func main() {
 			Members: []string{"Condition Expr", "Then Stmt", "Else Stmt"},
 		},
 		{
+			Name:    "WhileStmt",
+			Members: []string{"Condition Expr", "Statement Stmt"},
+		},
+		{
 			Name: "ForStmt",
 			Members: []string{
 				"Init Stmt",
