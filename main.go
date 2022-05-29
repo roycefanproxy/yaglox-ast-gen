@@ -121,14 +121,6 @@ func main() {
 			Members: []string{"Condition Expr", "Statement Stmt"},
 		},
 		{
-			Name: "ForStmt",
-			Members: []string{
-				"Init Stmt",
-				"Condition Expr",
-				"Statement Stmt",
-			},
-		},
-		{
 			Name:    "VarDeclStmt",
 			Members: []string{"Name Token", "Initializer Expr"},
 		},
