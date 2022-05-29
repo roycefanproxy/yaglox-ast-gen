@@ -109,8 +109,17 @@ func main() {
 			Members: []string{"Expression Expr"},
 		},
 		{
-			Name:    "PrintStmt",
-			Members: []string{"Expression Expr"},
+			Name:    "IfStmt",
+			Members: []string{"Condition Expr", "Then Stmt", "Else Stmt"},
+		},
+		{
+			Name: "ForStmt",
+			Members: []string{
+				"Init Stmt",
+				"Condition Expr",
+				"TailExpression Expr",
+				"Statement Stmt",
+			},
 		},
 		{
 			Name:    "VarDeclStmt",
@@ -119,6 +128,10 @@ func main() {
 		{
 			Name:    "BlockStmt",
 			Members: []string{"Statements []Stmt"},
+		},
+		{
+			Name:    "PrintStmt",
+			Members: []string{"Expression Expr"},
 		},
 	}, visitorTypes)
 
