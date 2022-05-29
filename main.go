@@ -86,6 +86,10 @@ func main() {
 			Members: []string{"Left Expr", "Operator Token", "Right Expr"},
 		},
 		{
+			Name:    "Call",
+			Members: []string{"Callee Expr", "Operator Token", "Arguments []Expr"},
+		},
+		{
 			Name:    "Grouping",
 			Members: []string{"Expression Expr"},
 		},
