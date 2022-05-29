@@ -94,6 +94,10 @@ func main() {
 			Members: []string{"Value interface{}"},
 		},
 		{
+			Name:    "Logical", // for and & or operators
+			Members: []string{"Left Expr", "Operator Token", "Right Expr"},
+		},
+		{
 			Name:    "Unary",
 			Members: []string{"Operator Token", "Right Expr"},
 		},
