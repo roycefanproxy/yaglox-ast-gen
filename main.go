@@ -116,6 +116,10 @@ func main() {
 			Name:    "VarDeclStmt",
 			Members: []string{"Name Token", "Initializer Expr"},
 		},
+		{
+			Name:    "BlockStmt",
+			Members: []string{"Statements []Stmt"},
+		},
 	}, visitorTypes)
 
 }
