@@ -79,7 +79,7 @@ func main() {
 	defineAST(outputDir, "Expr", []*Definition{
 		{
 			Name:    "Assign",
-			Members: []string{"Left Expr", "Operator Token", "Right Expr"},
+			Members: []string{"Name Token", "Value Expr"},
 		},
 		{
 			Name:    "Binary",
