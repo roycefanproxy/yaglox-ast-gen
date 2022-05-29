@@ -137,6 +137,10 @@ func main() {
 			Members: []string{"Statements []Stmt"},
 		},
 		{
+			Name:    "ReturnStmt",
+			Members: []string{"Value Expr"},
+		},
+		{
 			Name:    "PrintStmt",
 			Members: []string{"Expression Expr"},
 		},
