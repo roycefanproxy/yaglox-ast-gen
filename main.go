@@ -117,6 +117,10 @@ func main() {
 			Members: []string{"Expression Expr"},
 		},
 		{
+			Name:    "FunctionStmt",
+			Members: []string{"Name Token", "Params []Token", "Body []Stmt"},
+		},
+		{
 			Name:    "IfStmt",
 			Members: []string{"Condition Expr", "Then Stmt", "Else Stmt"},
 		},
