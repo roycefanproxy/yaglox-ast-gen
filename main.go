@@ -125,7 +125,6 @@ func main() {
 			Members: []string{
 				"Init Stmt",
 				"Condition Expr",
-				"TailExpression Expr",
 				"Statement Stmt",
 			},
 		},
