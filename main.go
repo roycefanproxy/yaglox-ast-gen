@@ -138,7 +138,7 @@ func main() {
 		},
 		{
 			Name:    "ReturnStmt",
-			Members: []string{"Value Expr"},
+			Members: []string{"Keyword Token", "Value Expr"},
 		},
 		{
 			Name:    "PrintStmt",
